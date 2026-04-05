@@ -1,7 +1,6 @@
 fileFormatVersion: 2
 guid: e19c54858e9d4cf4d9f790e8385103e3
 ModelImporter:
-  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -13,7 +12,6 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Colour_Palette_Sci_Fi_Emission_Low
-    second: {fileID: 8443986690989818273, guid: 047501233d2bcb64fbc12eb56cf2d3c8, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
