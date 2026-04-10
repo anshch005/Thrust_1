@@ -779,6 +779,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 56
       objectReference: {fileID: 0}
+    - target: {fileID: 6441960764489596233, guid: a63cd31e00d67fc4c903c6c12d610c1c, type: 3}
+      propertyPath: m_LinearDamping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8988111366859900837, guid: a63cd31e00d67fc4c903c6c12d610c1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -894,6 +898,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5108785324715465129, guid: 10defd6174b97f94ba0bb346058d3323, type: 3}
+      propertyPath: m_Height
+      value: 10.98
+      objectReference: {fileID: 0}
     - target: {fileID: 8396235337121993774, guid: 10defd6174b97f94ba0bb346058d3323, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.29
@@ -904,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396235337121993774, guid: 10defd6174b97f94ba0bb346058d3323, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9817
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 8396235337121993774, guid: 10defd6174b97f94ba0bb346058d3323, type: 3}
       propertyPath: m_LocalRotation.w
