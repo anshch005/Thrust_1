@@ -10,10 +10,12 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationStrength = 100f;
 
     Rigidbody rb;
+    AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -34,8 +36,16 @@ public class Movement : MonoBehaviour
         if (thrust.IsPressed())
         {
             rb.AddRelativeForce(Vector3.up * FlightForce * Time.fixedDeltaTime);
-            Debug.Log("wingardium leviosa");
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
+        else
+        {
+            audioSource.Stop();
+        }
+        Debug.Log("wingardium leviosa");
     }
 
     private void RotationalForce()
