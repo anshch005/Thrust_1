@@ -45,13 +45,11 @@ public class Movement : MonoBehaviour
         {
             audioSource.Stop();
         }
-        Debug.Log("wingardium leviosa");
     }
 
     private void RotationalForce()
     {
         float rotationInput = Rotation.ReadValue<float>();
-        Debug.Log("here is our rotation value: " + rotationInput);
         if(rotationInput < 0)
         {
             ApplyRotation(rotationStrength);
