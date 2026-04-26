@@ -10,6 +10,7 @@ public class CollisionDetect : MonoBehaviour
     [SerializeField] AudioClip Success;
 
     AudioSource audioSource;
+    bool isControllable=true;
     private void Start()
     {
         audioSource= GetComponent<AudioSource>();
@@ -17,6 +18,10 @@ public class CollisionDetect : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
 {  
+    if(isControllable)
+        {
+            return;
+        }
     {
     switch(other.gameObject.tag)
         {
