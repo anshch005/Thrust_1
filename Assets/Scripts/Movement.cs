@@ -8,7 +8,11 @@ public class Movement : MonoBehaviour
     [SerializeField] InputAction Rotation;
     [SerializeField] float FlightForce = 750f;
     [SerializeField] float rotationStrength = 100f;
-    [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip MainEngineSFX;
+    [SerializeField] ParticleSystem MainEngineParticle;
+    [SerializeField] ParticleSystem RightEngineThrust;
+    [SerializeField] ParticleSystem LeftEngineThrust;
+
     Rigidbody rb;
     AudioSource audioSource;
 
@@ -38,13 +42,18 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * FlightForce * Time.fixedDeltaTime);
             if(!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(mainEngine); //PlayOneShot= plays a clip without interrupting current audio, allowing mull\ltiple sounds to overlap.
+                audioSource.PlayOneShot(MainEngineSFX); //PlayOneShot= plays a clip without interrupting current audio, allowing mull\ltiple sounds to overlap.
                 //meanwhile AudioSource.Play() plays the assigned clip (replacing anything already playing)
+            }
+            if (!MainEngineParticle.isPlaying)
+            {
+                 MainEngineParticle.Play();
             }
         }
         else
         {
             audioSource.Stop();
+            MainEngineParticle.Stop();
         }
     }
 
@@ -54,10 +63,25 @@ public class Movement : MonoBehaviour
         if(rotationInput < 0)
         {
             ApplyRotation(rotationStrength);
+             if (!RightEngineThrust.isPlaying)
+            {
+                LeftEngineThrust.Stop();
+                 RightEngineThrust.Play();
+            }
         }
         else if(rotationInput > 0)
         {
             ApplyRotation(-rotationStrength);
+            if (!LeftEngineThrust.isPlaying)
+            {
+                RightEngineThrust.Stop();
+                LeftEngineThrust.Play();
+            }
+        }
+        else
+        {
+            RightEngineThrust.Stop();
+            LeftEngineThrust.Stop();
         }
 
     }
