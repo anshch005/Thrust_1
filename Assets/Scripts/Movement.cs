@@ -38,7 +38,8 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * FlightForce * Time.fixedDeltaTime);
             if(!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(mainEngine);
+                audioSource.PlayOneShot(mainEngine); //PlayOneShot= plays a clip without interrupting current audio, allowing mull\ltiple sounds to overlap.
+                //meanwhile AudioSource.Play() plays the assigned clip (replacing anything already playing)
             }
         }
         else

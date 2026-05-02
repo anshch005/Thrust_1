@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class CollisionDetect : MonoBehaviour
 {
     [SerializeField] float LevelLoadDelay = 2f;
-    [SerializeField] AudioClip Crash;
-    [SerializeField] AudioClip Success;
-
+    [SerializeField] AudioClip CrashSFX;
+    [SerializeField] AudioClip SuccessSFX;
+    [SerializeField] ParticleSystem SuccessParticle;
+    [SerializeField] ParticleSystem CrashParticle;
     AudioSource audioSource;
     bool isControllable=true;
     private void Start()
@@ -18,7 +19,7 @@ public class CollisionDetect : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
 {  
-    if(isControllable)
+    if(!isControllable)
         {
             return;
         }
@@ -39,13 +40,19 @@ public class CollisionDetect : MonoBehaviour
 }
     void StartSuccessSequence()
     {
-        audioSource.PlayOneShot(Success);
+        isControllable = false;
+        audioSource.Stop();
+        audioSource.PlayOneShot(SuccessSFX);
+        SuccessParticle.Play();
         GetComponent<Movement>().enabled=false;
         Invoke("LoadNextLevel",LevelLoadDelay);//minor delay before loading the level
     }
     void StartCrashSequence()
     {
-        audioSource.PlayOneShot(Crash);
+        isControllable =  false; //disable handling in case of crash
+        audioSource.Stop();
+        audioSource.PlayOneShot(CrashSFX);
+        CrashParticle.Play();
         GetComponent<Movement>().enabled=false; //turns off the movement during that window 
         Invoke("ReloadLevel",LevelLoadDelay); //invoke for delay 
     }
